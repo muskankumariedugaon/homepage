@@ -24,6 +24,7 @@ function Home() {
   return (
     <>
       {/* ================= FIRST PROJECT ================= */}
+      <ProfileCard/>
       <Hero />
       <Courses />
       <TopCompanies />
