@@ -14,13 +14,7 @@ import Features from "./SecondComponents/Features";
 import Curriculum from "./SecondComponents/Curriculum";
 import LearningJourney from "./SecondComponents/LearningJourney";
 import SecondFooter from "./SecondComponents/Footer";
-<<<<<<< HEAD
 import Portfolio from "./pages/Portfolio";
-=======
-import Designer from "./pages/Designer";
-
->>>>>>> 912b263d756c352f8347327b56a9154b49e7f0f5
-
 
 
 // ================= HOME PAGE =================
@@ -29,7 +23,6 @@ function Home() {
   return (
     <>
       {/* ================= FIRST PROJECT ================= */}
-     
       <Hero />
       <Courses />
       <TopCompanies />
@@ -67,10 +60,7 @@ function App() {
           path="/"
           element={<Home />}
         />
- <Route
-          path="/designer"
-          element={<Designer />}
-        />
+
         {/* ABOUT */}
         <Route
           path="/about"
@@ -91,11 +81,7 @@ function App() {
 
 
 
-<<<<<<< HEAD
-        <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/portfolio" element={<Portfolio />} />
-=======
->>>>>>> b979f295c78dc8530df41eddd41a5fe78bb9f1cc
       </Routes>
 
     </BrowserRouter>
