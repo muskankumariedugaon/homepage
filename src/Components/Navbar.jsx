@@ -295,7 +295,7 @@ export default function Navbar() {
               "
             >
               About US
-            </Link>bhfbvkerbvl
+            </Link>
           </div>
 
           {/* ================================================= */}
