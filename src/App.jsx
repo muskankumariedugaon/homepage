@@ -15,6 +15,7 @@ import Features from "./SecondComponents/Features";
 import Curriculum from "./SecondComponents/Curriculum";
 import LearningJourney from "./SecondComponents/LearningJourney";
 import SecondFooter from "./SecondComponents/Footer";
+import Portfolio from "./pages/Portfolio";
 
 
 // ================= HOME PAGE =================
@@ -82,6 +83,7 @@ function App() {
 
 
         <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
 
     </BrowserRouter>

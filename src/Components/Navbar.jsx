@@ -88,6 +88,20 @@ export default function Navbar() {
             >
               Home
             </Link>
+             <Link
+              to="/portfolio"
+              className="
+                whitespace-nowrap
+                text-[16px]
+                font-medium
+                text-gray-700
+                transition
+                duration-200
+                hover:text-[#1e1b6e]
+              "
+            >
+              portfolio
+            </Link>
 
             {/* ================================================= */}
             {/* BROWSE COURSES */}
