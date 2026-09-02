@@ -7,7 +7,6 @@ import Courses from "./Components/Courses";
 import Instructors from "./pages/Instructors";
 import WebDevelopment from "./pages/WebDevelopment";
 import About from "./pages/About";
-import Aboutus from "./Components/Aboutus";
 import TopCompanies from "./Components/TopCompanies";
 import WhyChoose from "./Components/WhyChoose";
 import SecondHero from "./SecondComponents/Hero";
@@ -18,12 +17,14 @@ import SecondFooter from "./SecondComponents/Footer";
 import Portfolio from "./pages/Portfolio";
 
 
+
 // ================= HOME PAGE =================
 
 function Home() {
   return (
     <>
       {/* ================= FIRST PROJECT ================= */}
+     
       <Hero />
       <Courses />
       <TopCompanies />
@@ -82,8 +83,11 @@ function App() {
 
 
 
+<<<<<<< HEAD
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/portfolio" element={<Portfolio />} />
+=======
+>>>>>>> b979f295c78dc8530df41eddd41a5fe78bb9f1cc
       </Routes>
 
     </BrowserRouter>

@@ -297,19 +297,7 @@ export default function Navbar() {
             >
               About
             </Link>
-            <Link
-              to="/aboutus"
-              className="
-                block
-                border-b
-                border-gray-100
-                py-3
-                font-medium
-                text-gray-700
-              "
-            >
-              About US
-            </Link>
+            
           </div>
 
           {/* ================================================= */}
