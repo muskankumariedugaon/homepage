@@ -39,15 +39,12 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white shadow-md">
-
       {/* ================= MAIN CONTAINER ================= */}
 
       <div className="mx-auto w-full max-w-[1450px] px-6 sm:px-8 lg:px-10">
-
         {/* ================= NAVBAR ROW ================= */}
 
         <div className="flex h-[88px] items-center">
-
           {/* ================================================= */}
           {/* LOGO */}
           {/* ================================================= */}
@@ -70,13 +67,11 @@ export default function Navbar() {
             />
           </Link>
 
-
           {/* ================================================= */}
           {/* DESKTOP MENU */}
           {/* ================================================= */}
 
           <div className="ml-12 hidden items-center gap-9 md:flex">
-
             {/* ================= HOME ================= */}
 
             <Link
@@ -94,13 +89,11 @@ export default function Navbar() {
               Home
             </Link>
 
-
             {/* ================================================= */}
             {/* BROWSE COURSES */}
             {/* ================================================= */}
 
             <div className="group relative">
-
               <button
                 type="button"
                 className="
@@ -117,17 +110,12 @@ export default function Navbar() {
                 "
               >
                 Browse Courses
-
-                <span className="text-[13px]">
-                  ⌄
-                </span>
+                <span className="text-[13px]">⌄</span>
               </button>
-
 
               {/* ================= DROPDOWN ================= */}
 
               <div className="absolute left-0 top-full hidden w-64 pt-4 group-hover:block">
-
                 <div
                   className="
                     overflow-hidden
@@ -139,15 +127,12 @@ export default function Navbar() {
                     shadow-xl
                   "
                 >
-
-                  {browseCoursesItems.map((item) => (
-
+                  {browseCoursesItems.map((item) =>
                     /* =================================================
                        WEB DEVELOPMENT - ROUTED LINK
                     ================================================= */
 
                     item === "Web Development" ? (
-
                       <Link
                         key={item}
                         to="/courses/web-development"
@@ -168,9 +153,7 @@ export default function Navbar() {
                       >
                         {item}
                       </Link>
-
                     ) : (
-
                       /* =================================================
                          OTHER COURSES - EXISTING BUTTON
                       ================================================= */
@@ -194,24 +177,17 @@ export default function Navbar() {
                       >
                         {item}
                       </button>
-
-                    )
-
-                  ))}
-
+                    ),
+                  )}
                 </div>
-
               </div>
-
             </div>
-
 
             {/* ================================================= */}
             {/* CATEGORIES */}
             {/* ================================================= */}
 
             <div className="group relative">
-
               <button
                 type="button"
                 className="
@@ -228,17 +204,12 @@ export default function Navbar() {
                 "
               >
                 Categories
-
-                <span className="text-[13px]">
-                  ⌄
-                </span>
+                <span className="text-[13px]">⌄</span>
               </button>
-
 
               {/* ================= DROPDOWN ================= */}
 
               <div className="absolute left-0 top-full hidden w-56 pt-4 group-hover:block">
-
                 <div
                   className="
                     overflow-hidden
@@ -250,9 +221,7 @@ export default function Navbar() {
                     shadow-xl
                   "
                 >
-
                   {categoriesItems.map((item) => (
-
                     <button
                       key={item}
                       type="button"
@@ -272,15 +241,10 @@ export default function Navbar() {
                     >
                       {item}
                     </button>
-
                   ))}
-
                 </div>
-
               </div>
-
             </div>
-
 
             {/* ================================================= */}
             {/* INSTRUCTORS */}
@@ -301,7 +265,6 @@ export default function Navbar() {
               Instructors
             </Link>
 
-
             {/* ================================================= */}
             {/* ABOUT */}
             {/* ================================================= */}
@@ -320,16 +283,26 @@ export default function Navbar() {
             >
               About
             </Link>
-
+            <Link
+              to="/aboutus"
+              className="
+                block
+                border-b
+                border-gray-100
+                py-3
+                font-medium
+                text-gray-700
+              "
+            >
+              About US
+            </Link>
           </div>
-
 
           {/* ================================================= */}
           {/* RIGHT SIDE BUTTONS */}
           {/* ================================================= */}
 
           <div className="ml-auto hidden items-center gap-4 md:flex">
-
             {/* ================= CONTACT ================= */}
 
             <Link
@@ -350,7 +323,6 @@ export default function Navbar() {
               Contact
             </Link>
 
-
             {/* ================= LOGIN ================= */}
 
             <Link
@@ -370,9 +342,7 @@ export default function Navbar() {
             >
               Login
             </Link>
-
           </div>
-
 
           {/* ================================================= */}
           {/* MOBILE MENU BUTTON */}
@@ -393,16 +363,13 @@ export default function Navbar() {
           >
             {menuOpen ? "✕" : "☰"}
           </button>
-
         </div>
-
 
         {/* ================================================= */}
         {/* MOBILE MENU */}
         {/* ================================================= */}
 
         {menuOpen && (
-
           <div
             className="
               border-t
@@ -412,7 +379,6 @@ export default function Navbar() {
               md:hidden
             "
           >
-
             {/* ================= HOME ================= */}
 
             <Link
@@ -430,13 +396,11 @@ export default function Navbar() {
               Home
             </Link>
 
-
             {/* ================================================= */}
             {/* MOBILE BROWSE COURSES */}
             {/* ================================================= */}
 
             <div className="border-b border-gray-100">
-
               <button
                 type="button"
                 onClick={() => setCourseOpen(!courseOpen)}
@@ -450,9 +414,7 @@ export default function Navbar() {
                   text-gray-700
                 "
               >
-                <span>
-                  Browse Courses
-                </span>
+                <span>Browse Courses</span>
 
                 <span
                   className={`transition-transform duration-200 ${
@@ -463,19 +425,14 @@ export default function Navbar() {
                 </span>
               </button>
 
-
               {courseOpen && (
-
                 <div className="pb-3 pl-4">
-
-                  {browseCoursesItems.map((item) => (
-
+                  {browseCoursesItems.map((item) =>
                     /* =================================================
                        MOBILE WEB DEVELOPMENT LINK
                     ================================================= */
 
                     item === "Web Development" ? (
-
                       <Link
                         key={item}
                         to="/web-development"
@@ -493,9 +450,7 @@ export default function Navbar() {
                       >
                         {item}
                       </Link>
-
                     ) : (
-
                       <button
                         key={item}
                         type="button"
@@ -513,24 +468,17 @@ export default function Navbar() {
                       >
                         {item}
                       </button>
-
-                    )
-
-                  ))}
-
+                    ),
+                  )}
                 </div>
-
               )}
-
             </div>
-
 
             {/* ================================================= */}
             {/* MOBILE CATEGORIES */}
             {/* ================================================= */}
 
             <div className="border-b border-gray-100">
-
               <button
                 type="button"
                 onClick={() => setCategoryOpen(!categoryOpen)}
@@ -544,9 +492,7 @@ export default function Navbar() {
                   text-gray-700
                 "
               >
-                <span>
-                  Categories
-                </span>
+                <span>Categories</span>
 
                 <span
                   className={`transition-transform duration-200 ${
@@ -557,13 +503,9 @@ export default function Navbar() {
                 </span>
               </button>
 
-
               {categoryOpen && (
-
                 <div className="pb-3 pl-4">
-
                   {categoriesItems.map((item) => (
-
                     <button
                       key={item}
                       type="button"
@@ -581,15 +523,10 @@ export default function Navbar() {
                     >
                       {item}
                     </button>
-
                   ))}
-
                 </div>
-
               )}
-
             </div>
-
 
             {/* ================================================= */}
             {/* MOBILE INSTRUCTORS */}
@@ -610,7 +547,6 @@ export default function Navbar() {
               Instructors
             </Link>
 
-
             {/* ================================================= */}
             {/* MOBILE ABOUT */}
             {/* ================================================= */}
@@ -630,13 +566,12 @@ export default function Navbar() {
               About
             </Link>
 
-
+            
             {/* ================================================= */}
             {/* MOBILE BUTTONS */}
             {/* ================================================= */}
 
             <div className="flex flex-col gap-3 pt-5 sm:flex-row">
-
               {/* CONTACT */}
 
               <Link
@@ -659,7 +594,6 @@ export default function Navbar() {
                 Contact
               </Link>
 
-
               {/* LOGIN */}
 
               <Link
@@ -681,13 +615,9 @@ export default function Navbar() {
               >
                 Login
               </Link>
-
             </div>
-
           </div>
-
         )}
-
       </div>
     </nav>
   );
