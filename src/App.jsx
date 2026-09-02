@@ -15,6 +15,8 @@ import Features from "./SecondComponents/Features";
 import Curriculum from "./SecondComponents/Curriculum";
 import LearningJourney from "./SecondComponents/LearningJourney";
 import SecondFooter from "./SecondComponents/Footer";
+import Designer from "./pages/Designer";
+
 
 
 // ================= HOME PAGE =================
@@ -60,7 +62,10 @@ function App() {
           path="/"
           element={<Home />}
         />
-
+ <Route
+          path="/designer"
+          element={<Designer />}
+        />
         {/* ABOUT */}
         <Route
           path="/about"

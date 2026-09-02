@@ -89,6 +89,21 @@ export default function Navbar() {
               Home
             </Link>
 
+            <Link
+              to="/designer"
+              className="
+                whitespace-nowrap
+                text-[16px]
+                font-medium
+                text-gray-700
+                transition
+                duration-200
+                hover:text-[#1e1b6e]
+              "
+            >
+              Designer
+            </Link>
+
             {/* ================================================= */}
             {/* BROWSE COURSES */}
             {/* ================================================= */}
