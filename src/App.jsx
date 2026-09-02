@@ -14,7 +14,7 @@ import Features from "./SecondComponents/Features";
 import Curriculum from "./SecondComponents/Curriculum";
 import LearningJourney from "./SecondComponents/LearningJourney";
 import SecondFooter from "./SecondComponents/Footer";
-import ProfileCard from "./pages/ProfileCard";
+
 
 
 // ================= HOME PAGE =================
@@ -23,7 +23,7 @@ function Home() {
   return (
     <>
       {/* ================= FIRST PROJECT ================= */}
-      <ProfileCard/>
+     
       <Hero />
       <Courses />
       <TopCompanies />
