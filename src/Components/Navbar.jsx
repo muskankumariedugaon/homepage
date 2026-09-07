@@ -41,7 +41,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-white shadow-md">
       {/* ================= MAIN CONTAINER ================= */}
 
-      <div className="mx-auto w-full max-w-[1450px] px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[1623px] px-6 sm:px-8 lg:px-10">
         {/* ================= NAVBAR ROW ================= */}
 
         <div className="flex h-[88px] items-center">
