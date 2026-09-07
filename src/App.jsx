@@ -28,6 +28,13 @@ import CyberSecurity from "./Components/CyberSecurity";
 import ProgramerHero from "./Components/ProgramerHero";
 import GraphicHero from "./Components/GraphicHero";
 import MarketingHero from "./Components/MarketingHero";
+import Welcome from "./pages/Welcome";
+import Signup from "./pages/Signup";
+import Forgot from "./pages/Forgot";
+import Verification from "./pages/Verification";
+import NewPassword from "./pages/NewPassword";
+import PasswordChanged from "./pages/PasswordChanged";
+import AccountCreated from "./pages/AccountCreated";
 // ================= HOME PAGE =================
 
 function Home() {
@@ -64,6 +71,28 @@ function App() {
       {/* ================= ROUTES ================= */}
 
       <Routes>
+
+        <Route path="/" element={<Welcome />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot" element={<Forgot />} />
+                <Route
+                  path="/verification"
+                  element={<Verification />}
+                />
+                <Route
+                  path="/new-password"
+                  element={<NewPassword />}
+                />
+                <Route
+                  path="/password-changed"
+                  element={<PasswordChanged />}
+                />
+                <Route
+                  path="/account-created"
+                  element={<AccountCreated />}
+                />
+                <Route path="*" element={<Welcome />} />
 
         {/* HOME */}
         <Route
