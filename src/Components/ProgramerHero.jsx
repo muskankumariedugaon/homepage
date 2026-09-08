@@ -1,7 +1,7 @@
 import HERO_IMG from "../assets/hero.png";
 import ProgramerTrustedBy from "./ProgramerTrustedBy";
 import ProgramerPrograms from "./ProgramerPrograms";
-import ProgramerWhystudy from "./ProgramerWhystudy";
+import ProgramerWhyStudy from "./ProgramerWhyStudy";
 
 export default function ProgramerHero() {
   return (
@@ -13,7 +13,7 @@ export default function ProgramerHero() {
       />
       <ProgramerTrustedBy />
       <ProgramerPrograms />
-      <ProgramerWhystudy />
+      <ProgramerWhyStudy />
     </section>
   );
 }

@@ -7,9 +7,7 @@ import BackPages from "../Components/BackPages";
 import MyTitle from "../Components/MyTitle";
 import MyField from "../Components/MyField";
 import PrimaryButton from "../Components/PrimaryButtons";
-
 import forgotImg from "../assets/forgot.png";
-import BackPages from "../Components/BackPages";
 
 function Forgot() {
   const navigate = useNavigate();

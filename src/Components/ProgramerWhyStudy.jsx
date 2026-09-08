@@ -6,7 +6,7 @@ const icons = {
   "Placement Support": BriefcaseBusiness,
 };
 
-export default function WhyStudy() {
+export default function ProgramerWhyStudy() {
   return (
     <section className="bg-white px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-5xl text-center md:px-6">
