@@ -8,8 +8,8 @@ import BackPages from "../Components/BackPages";
 import MyTitle from "../Components/MyTitle";
 import MyField from "../Components/MyField";
 import PrimaryButtons from "../Components/PrimaryButtons";
-import Divider from "../components/Divider";
-import SocialIcon from "../components/SocialIcon";
+import Divider from "../Components/Divider";
+import SocialIcon from "../Components/SocialIcon";
 
 function Signup() {
   const navigate = useNavigate();

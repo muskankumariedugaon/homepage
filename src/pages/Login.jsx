@@ -7,8 +7,8 @@ import BackPages from "../Components/BackPages";
 import MyTitle from "../Components/MyTitle";
 import MyField from "../Components/MyField";
 import PrimaryButton from "../Components/PrimaryButtons";
-import Divider from "../components/Divider";
-import SocialButtons from "../components/SocialButtons";
+import Divider from "../Components/Divider";
+import SocialButtons from "../Components/SocialButtons";
 
 function Login() {
   const navigate = useNavigate();
