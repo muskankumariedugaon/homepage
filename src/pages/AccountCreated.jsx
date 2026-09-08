@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Shell from "../Components/ShellPages";
+import ShellPages from "../Components/ShellPages";
 import MyCard from "../Components/MyCard";
 import BackPages from "../Components/BackPages";
 import MyTitle from "../Components/MyTitle";

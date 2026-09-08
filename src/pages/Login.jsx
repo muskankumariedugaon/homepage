@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Shell from "../Components/ShellPages";
-import Card from "../Components/MyCard";
-import Back from "../Components/BackPages";
-import Title from "../Components/MyTitle";
-import Field from "../components/Field";
+import ShellPages from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import BackPages from "../Components/BackPages";
+import MyTitle from "../Components/MyTitle";
+import MyField from "../Components/MyField";
 import PrimaryButton from "../Components/PrimaryButtons";
 import Divider from "../components/Divider";
 import SocialButtons from "../components/SocialButtons";
@@ -18,16 +18,16 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <Shell>
-      <Card>
-        <Back />
+    <ShellPages>
+      <MyCard>
+        <BackPages to="/login" />
 
-        <Title
+        <MyTitle
           title="Login Account"
           subtitle="Welcome Back!"
         />
 
-        <Field
+        <MyField
           label="Email Address"
           placeholder="Enter email address"
           value={email}
@@ -42,7 +42,7 @@ function Login() {
           }
         />
 
-        <Field
+        <MyField
           label="Password"
           placeholder="Create password"
           type="password"
@@ -86,8 +86,8 @@ function Login() {
             Sign Up
           </Link>
         </p>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

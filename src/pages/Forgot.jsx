@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Shell from "../Components/ShellPages";
-import Card from "../Components/MyCard";
-import Back from "../Components/BackPages";
-import Title from "../Components/MyTitle";
-import Field from "../components/Field";
+import ShellPages from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import BackPages from "../Components/BackPages";
+import MyTitle from "../Components/MyTitle";
+import MyField from "../Components/MyField";
 import PrimaryButton from "../Components/PrimaryButtons";
 
 import forgotImg from "../assets/forgot.png";
+import BackPages from "../Components/BackPages";
 
 function Forgot() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
   return (
-    <Shell>
-      <Card>
-        <Back to="/login" />
+    <ShellPages>
+      <MyCard>
+        <BackPages to="/login" />
 
-        <Title
+        <MyTitle
           title="Forgot Password?"
           subtitle="No worries, We got you."
         />
@@ -34,7 +35,7 @@ function Forgot() {
         </div>
 
         {/* Email Field */}
-        <Field
+        <MyField
           label="Email Address"
           placeholder="Enter email address"
           value={email}
@@ -55,8 +56,8 @@ function Forgot() {
         <p className="text-center text-[9px] mt-6">
           ← &nbsp; Back to log in?
         </p>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
 
-import Shell from "../Components/ShellPages";
-import Card from "../Components/MyCard";
-import Back from "../Components/BackPages";
-import Title from "../Components/MyTitle";
-import Field from "../components/Field";
-import PrimaryButton from "../Components/PrimaryButtons";
+import ShellPages from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import BackPages from "../Components/BackPages";
+import MyTitle from "../Components/MyTitle";
+import MyField from "../Components/MyField";
+import PrimaryButtons from "../Components/PrimaryButtons";
 import Divider from "../components/Divider";
 import SocialIcon from "../components/SocialIcon";
 
@@ -22,16 +22,16 @@ function Signup() {
   const [confirm, setConfirm] = useState("");
 
   return (
-    <Shell>
-      <Card>
-        <Back />
+    <ShellPages>
+      <MyCard>
+        <BackPages />
 
-        <Title
+        <MyTitle
           title="Create Account"
           subtitle="Sign up to continue"
         />
 
-        <Field
+        <MyField
           label="Email Address"
           placeholder="Enter email address"
           value={email}
@@ -46,7 +46,7 @@ function Signup() {
           }
         />
 
-        <Field
+        <MyField
           label="Password"
           placeholder="Create password"
           type="password"
@@ -56,7 +56,7 @@ function Signup() {
           setShowPassword={setShowPassword}
         />
 
-        <Field
+        <MyField
           label="Confirm Password"
           placeholder="Re-enter password"
           type="password"
@@ -74,9 +74,9 @@ function Signup() {
           I agree with privacy policy
         </label>
 
-        <PrimaryButton onClick={() => navigate("/account-created")}>
+        <PrimaryButtons onClick={() => navigate("/account-created")}>
           Sign up
-        </PrimaryButton>
+        </PrimaryButtons>
 
         <Divider text="or sign up with" />
 
@@ -104,8 +104,8 @@ function Signup() {
             Login
           </Link>
         </p>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

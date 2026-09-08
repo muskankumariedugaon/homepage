@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Shell from "../Components/ShellPages";
-import Card from "../Components/MyCard";
-import Back from "../Components/BackPages";
-import Title from "../Components/MyTitle";
-import PrimaryButton from "../Components/PrimaryButtons";
+import ShellPages from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import BackPages from "../Components/BackPages";
+import MyTitle from "../Components/MyTitle";
+import PrimaryButtons from "../Components/PrimaryButtons";
 
 import verificationImg from "../assets/verification.png";
 
@@ -43,11 +43,11 @@ function Verification() {
   };
 
   return (
-    <Shell>
-      <Card>
-        <Back to="/forgot" />
+    <ShellPages>
+      <MyCard>
+        <BackPages to="/forgot" />
 
-        <Title
+        <MyTitle
           title="Verification"
           subtitle="Enter the code to continue."
         />
@@ -76,11 +76,11 @@ function Verification() {
           ))}
         </div>
 
-        <PrimaryButton
+        <PrimaryButtons
           onClick={() => navigate("/new-password")}
         >
           Send Code
-        </PrimaryButton>
+        </PrimaryButtons>
 
         <p className="text-[8px] mt-3">
           Don't receive the code?{" "}
@@ -95,8 +95,8 @@ function Verification() {
         <p className="text-center text-[9px] mt-5">
           ← &nbsp; Back to log in?
         </p>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-import Shell from "../Components/ShellPages";
-import Card from "../Components/MyCard";
-import Title from "../Components/MyTitle";
-import PrimaryButton from "../Components/PrimaryButtons";
+import ShellPages from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import MyTitle from "../Components/MyTitle";
+import PrimaryButtons from "../Components/PrimaryButtons";
 
 import welcomeImg from "../assets/welcome.png";
 
 function Welcome() {
   return (
-    <Shell>
-      <Card className="flex flex-col">
+    <ShellPages>
+      <MyCard className="flex flex-col">
         <div className="mt-4">
-          <Title
+          <MyTitle
             title="Welcome"
             subtitle="Login or signup to continue"
           />
@@ -28,7 +28,7 @@ function Welcome() {
 
         <div className="space-y-2">
           <Link to="/signup" className="block">
-            <PrimaryButton>Sign up</PrimaryButton>
+            <PrimaryButtons>Sign up</PrimaryButtons>
           </Link>
 
           <Link
@@ -42,8 +42,8 @@ function Welcome() {
             Continue as a guest?
           </p>
         </div>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

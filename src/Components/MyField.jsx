@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 
-function Field({
+function MyField({
   label,
   placeholder,
   type = "text",
@@ -44,4 +44,4 @@ function Field({
   );
 }
 
-export default Field;
+export default MyField;

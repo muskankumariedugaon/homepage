@@ -5,7 +5,7 @@ import Shell from "../Components/ShellPages";
 import Card from "../Components/MyCard";
 import Back from "../Components/BackPages";
 import Title from "../Components/MyTitle";
-import Field from "../components/Field";
+import Field from "../Components/MyField";
 import PrimaryButton from "../Components/PrimaryButtons";
 
 import newPasswordImg from "../assets/new-password.png";
