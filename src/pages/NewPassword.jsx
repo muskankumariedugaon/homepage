@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Shell from "../components/Shell";
-import Card from "../components/Card";
-import Back from "../components/Back";
-import Title from "../components/Title";
+import Shell from "../Components/ShellPages";
+import Card from "../Components/MyCard";
+import Back from "../Components/BackPages";
+import Title from "../Components/MyTitle";
 import Field from "../components/Field";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../Components/PrimaryButtons";
 
 import newPasswordImg from "../assets/new-password.png";
 

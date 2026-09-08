@@ -1,4 +1,4 @@
-function PrimaryButton({ children, onClick, type = "button" }) {
+function PrimaryButtons({ children, onClick, type = "button" }) {
   return (
     <button
       type={type}
@@ -10,4 +10,4 @@ function PrimaryButton({ children, onClick, type = "button" }) {
   );
 }
 
-export default PrimaryButton;
+export default PrimaryButtons;

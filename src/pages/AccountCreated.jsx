@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 
-import Shell from "../components/Shell";
-import Card from "../components/Card";
-import Back from "../components/Back";
-import Title from "../components/Title";
-import PrimaryButton from "../components/PrimaryButton";
+import Shell from "../Components/ShellPages";
+import MyCard from "../Components/MyCard";
+import BackPages from "../Components/BackPages";
+import MyTitle from "../Components/MyTitle";
+import PrimaryButtons from "../Components/PrimaryButtons";
 
 import accountCreatedImg from "../assets/account-created.png";
 
 function AccountCreated() {
   return (
-    <Shell>
-      <Card className="flex flex-col">
-        <Back to="/" />
+    <ShellPages >
+      <MyCard className="flex flex-col">
+        <BackPages to="/" />
 
-        <Title
+        <MyTitle
           title="Account Created!"
           subtitle="Welcome to Nextgen."
         />
@@ -41,10 +41,10 @@ function AccountCreated() {
 
         {/* Continue Button */}
         <Link to="/login" className="block">
-          <PrimaryButton>Continue</PrimaryButton>
+          <PrimaryButtons>Continue</PrimaryButtons>
         </Link>
-      </Card>
-    </Shell>
+      </MyCard>
+    </ShellPages>
   );
 }
 

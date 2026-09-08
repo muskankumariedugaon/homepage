@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-function Back({ to = "/" }) {
+function BackPages({ to = "/" }) {
   return (
     <Link
       to={to}
@@ -12,4 +12,4 @@ function Back({ to = "/" }) {
   );
 }
 
-export default Back;
+export default BackPages;

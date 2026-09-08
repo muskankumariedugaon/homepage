@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import Shell from "../components/Shell";
-import Card from "../components/Card";
-import Back from "../components/Back";
-import Title from "../components/Title";
-import PrimaryButton from "../components/PrimaryButton";
+import Shell from "../Components/ShellPages";
+import Card from "../Components/MyCard";
+import Back from "../Components/BackPages";
+import Title from "../Components/MyTitle";
+import PrimaryButton from "../Components/PrimaryButtons";
 
 import passwordChangedImg from "../assets/password-changed.png";
 

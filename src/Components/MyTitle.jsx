@@ -1,4 +1,4 @@
-function Title({ title, subtitle }) {
+function MyTitle({ title, subtitle }) {
   return (
     <div className="mb-5">
       <h1 className="text-[23px] leading-none font-extrabold text-[#080B78]">
@@ -11,4 +11,4 @@ function Title({ title, subtitle }) {
   );
 }
 
-export default Title;
+export default MyTitle;
