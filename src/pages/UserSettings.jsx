@@ -1,31 +1,14 @@
 import { useState } from "react";
-import {
-  Bell,
-  Lock,
-  Eye,
-  EyeOff,
-  Save,
-  Loader2,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
 import { Link } from "react-router-dom";
-
-const API_BASE_URL =
-  "https://nextgen-backend-81fc.onrender.com/api";
+import { Eye, EyeOff, Lock, Mail, ShieldCheck } from "lucide-react";
 
 function UserSettings() {
-  const [emailNotifications, setEmailNotifications] =
-    useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(true);
 
-  const [currentPassword, setCurrentPassword] =
-    useState("");
-
-  const [newPassword, setNewPassword] =
-    useState("");
-
-  const [confirmPassword, setConfirmPassword] =
-    useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [otp, setOtp] = useState("");
 
   const [showCurrentPassword, setShowCurrentPassword] =
     useState(false);
@@ -37,26 +20,30 @@ function UserSettings() {
     useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
-  // ==========================================
-  // CHANGE PASSWORD
-  // ==========================================
+  const API_BASE_URL =
+    "https://nextgen-backend-81fc.onrender.com/api";
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
 
+    setMessage("");
     setError("");
-    setSuccess("");
 
-    if (!currentPassword) {
-      setError("Please enter your current password.");
+    if (
+      !currentPassword ||
+      !newPassword ||
+      !confirmPassword ||
+      !otp
+    ) {
+      setError("Please fill all fields.");
       return;
     }
 
-    if (!newPassword) {
-      setError("Please enter your new password.");
+    if (otp !== "123456") {
+      setError("Invalid OTP.");
       return;
     }
 
@@ -67,42 +54,40 @@ function UserSettings() {
       return;
     }
 
-    if (!confirmPassword) {
+    if (newPassword !== confirmPassword) {
       setError(
-        "Please confirm your new password."
+        "New password and confirm password do not match."
       );
       return;
     }
 
-    if (newPassword !== confirmPassword) {
-      setError("New passwords do not match.");
+    const token = localStorage.getItem("userToken");
+
+    if (!token) {
+      setError(
+        "Your session has expired. Please login again."
+      );
       return;
     }
 
     try {
       setLoading(true);
 
-      const token = localStorage.getItem("userToken");
-
-      if (!token) {
-        setError(
-          "Your session has expired. Please login again."
-        );
-        return;
-      }
-
       const response = await fetch(
         `${API_BASE_URL}/auth/change-password`,
         {
           method: "PUT",
+
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
+
           body: JSON.stringify({
             currentPassword,
             newPassword,
             confirmPassword,
+            otp,
           }),
         }
       );
@@ -116,13 +101,14 @@ function UserSettings() {
         );
       }
 
-      setSuccess(
-        "Password changed successfully."
+      setMessage(
+        "Password changed successfully. A confirmation email has been sent."
       );
 
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
+      setOtp("");
     } catch (error) {
       console.error(
         "Change Password Error:",
@@ -131,54 +117,45 @@ function UserSettings() {
 
       setError(
         error.message ||
-          "Failed to change password."
+          "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
     }
   };
 
-  // ==========================================
-  // PASSWORD INPUT
-  // ==========================================
-
-  const PasswordInput = ({
+  const PasswordField = ({
     label,
     value,
     onChange,
-    showPassword,
-    setShowPassword,
+    show,
+    setShow,
     placeholder,
   }) => {
     return (
       <div>
-        <label className="mb-2 block text-sm font-semibold text-[#000080]">
+        <label className="mb-1.5 block text-xs font-semibold text-[#000080]">
           {label}
         </label>
 
         <div className="relative">
-          <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#6D8196]" />
-
           <input
-            type={showPassword ? "text" : "password"}
+            type={show ? "text" : "password"}
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            disabled={loading}
-            className="w-full rounded-xl border border-[#6D8196]/20 bg-[#FFFAFA] py-3 pl-12 pr-12 text-sm outline-none transition focus:border-[#000080] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-xl border border-[#ADD8E6] bg-white px-4 py-3 pr-11 text-sm outline-none transition focus:border-[#000080]"
           />
 
           <button
             type="button"
-            onClick={() =>
-              setShowPassword(!showPassword)
-            }
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1 text-[#6D8196] hover:bg-[#ADD8E6]/20"
+            onClick={() => setShow(!show)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6D8196]"
           >
-            {showPassword ? (
-              <EyeOff className="h-5 w-5" />
+            {show ? (
+              <EyeOff size={18} />
             ) : (
-              <Eye className="h-5 w-5" />
+              <Eye size={18} />
             )}
           </button>
         </div>
@@ -186,209 +163,191 @@ function UserSettings() {
     );
   };
 
-  // ==========================================
-  // PAGE
-  // ==========================================
-
   return (
-    <div className="min-h-screen bg-[#FFFAFA] p-4 sm:p-6 lg:p-8">
-      <div className="mx-auto max-w-4xl">
+    <div className="min-h-screen bg-[#FFFAFA] px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl">
 
-        {/* HEADER */}
+        {/* Header */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-[#000080] sm:text-3xl">
+          <h1 className="text-2xl font-bold text-[#000080]">
             Settings
           </h1>
 
           <p className="mt-1 text-sm text-[#6D8196]">
-            Manage your account preferences and security.
+            Manage your account settings and security.
           </p>
         </div>
 
-        {/* EMAIL NOTIFICATIONS */}
-        <div className="mb-6 rounded-2xl border border-[#ADD8E6]/50 bg-white p-6 shadow-sm">
+        {/* Email Notifications */}
+        <div className="mb-6 rounded-2xl border border-[#ADD8E6] bg-white p-5 shadow-sm">
+          <div className="flex items-center justify-between gap-4">
 
-          <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ADD8E6]/30 text-[#000080]">
+                <Mail size={20} />
+              </div>
 
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ADD8E6]/30">
-              <Bell className="h-5 w-5 text-[#000080]" />
-            </div>
+              <div>
+                <h2 className="font-semibold text-gray-800">
+                  Email Notifications
+                </h2>
 
-            <div className="flex-1">
-              <h2 className="font-bold text-[#000080]">
-                Email Notifications
-              </h2>
-
-              <p className="mt-1 text-sm text-[#6D8196]">
-                Receive updates and important account
-                notifications by email.
-              </p>
-
-              <div className="mt-5 flex items-center justify-between rounded-xl border border-[#ADD8E6]/40 bg-[#FFFAFA] p-4">
-
-                <div>
-                  <p className="text-sm font-semibold text-gray-800">
-                    Email notifications
-                  </p>
-
-                  <p className="mt-1 text-xs text-[#6D8196]">
-                    {emailNotifications
-                      ? "Notifications are enabled."
-                      : "Notifications are disabled."}
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    setEmailNotifications(
-                      !emailNotifications
-                    )
-                  }
-                  className={`relative h-6 w-11 rounded-full transition ${
-                    emailNotifications
-                      ? "bg-[#000080]"
-                      : "bg-gray-300"
-                  }`}
-                  aria-label="Toggle email notifications"
-                >
-                  <span
-                    className={`absolute top-1 h-4 w-4 rounded-full bg-white transition ${
-                      emailNotifications
-                        ? "left-6"
-                        : "left-1"
-                    }`}
-                  />
-                </button>
-
+                <p className="mt-1 text-xs text-[#6D8196]">
+                  Receive important account notifications
+                  by email.
+                </p>
               </div>
             </div>
 
+            <button
+              type="button"
+              onClick={() =>
+                setEmailNotifications(
+                  !emailNotifications
+                )
+              }
+              className={`relative h-6 w-11 rounded-full transition ${
+                emailNotifications
+                  ? "bg-[#000080]"
+                  : "bg-gray-300"
+              }`}
+            >
+              <span
+                className={`absolute top-1 h-4 w-4 rounded-full bg-white transition ${
+                  emailNotifications
+                    ? "left-6"
+                    : "left-1"
+                }`}
+              />
+            </button>
           </div>
         </div>
 
-        {/* CHANGE PASSWORD */}
-        <div className="rounded-2xl border border-[#ADD8E6]/50 bg-white p-6 shadow-sm">
+        {/* Security */}
+        <div className="rounded-2xl border border-[#ADD8E6] bg-white p-5 shadow-sm sm:p-6">
 
-          <div className="flex items-start gap-4">
-
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ADD8E6]/30">
-              <Lock className="h-5 w-5 text-[#000080]" />
+          <div className="mb-6 flex items-center gap-4">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ADD8E6]/30 text-[#000080]">
+              <ShieldCheck size={20} />
             </div>
 
-            <div className="flex-1">
-
-              <h2 className="font-bold text-[#000080]">
+            <div>
+              <h2 className="font-semibold text-gray-800">
                 Change Password
               </h2>
 
-              <p className="mt-1 text-sm text-[#6D8196]">
-                Keep your account secure by using a
-                strong password.
+              <p className="mt-1 text-xs text-[#6D8196]">
+                Update your password to keep your account
+                secure.
               </p>
-
             </div>
-
           </div>
-
-          {/* ERROR */}
-          {error && (
-            <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-600">
-              <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
-              <span>{error}</span>
-            </div>
-          )}
-
-          {/* SUCCESS */}
-          {success && (
-            <div className="mt-5 flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium text-green-600">
-              <CheckCircle className="mt-0.5 h-5 w-5 shrink-0" />
-              <span>{success}</span>
-            </div>
-          )}
 
           <form
             onSubmit={handleChangePassword}
-            className="mt-6 space-y-5"
+            className="space-y-5"
           >
-
-            <PasswordInput
+            <PasswordField
               label="Current Password"
               value={currentPassword}
               onChange={(e) =>
                 setCurrentPassword(e.target.value)
               }
-              showPassword={
-                showCurrentPassword
-              }
-              setShowPassword={
-                setShowCurrentPassword
-              }
+              show={showCurrentPassword}
+              setShow={setShowCurrentPassword}
               placeholder="Enter current password"
             />
 
-            <PasswordInput
+            <PasswordField
               label="New Password"
               value={newPassword}
               onChange={(e) =>
                 setNewPassword(e.target.value)
               }
-              showPassword={showNewPassword}
-              setShowPassword={
-                setShowNewPassword
-              }
+              show={showNewPassword}
+              setShow={setShowNewPassword}
               placeholder="Enter new password"
             />
 
-            <PasswordInput
+            <PasswordField
               label="Confirm New Password"
               value={confirmPassword}
               onChange={(e) =>
-                setConfirmPassword(
-                  e.target.value
-                )
+                setConfirmPassword(e.target.value)
               }
-              showPassword={
-                showConfirmPassword
-              }
-              setShowPassword={
-                setShowConfirmPassword
-              }
+              show={showConfirmPassword}
+              setShow={setShowConfirmPassword}
               placeholder="Confirm new password"
             />
 
-            <div className="flex flex-col gap-3 border-t border-[#ADD8E6]/30 pt-5 sm:flex-row sm:items-center sm:justify-between">
+            {/* Fixed OTP */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold text-[#000080]">
+                Verification OTP
+              </label>
 
-              <Link
-                to="/forgot"
-                className="text-sm font-semibold text-[#000080] hover:underline"
-              >
-                Forgot Password?
-              </Link>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={6}
+                value={otp}
+                onChange={(e) =>
+                  setOtp(
+                    e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 6)
+                  )
+                }
+                placeholder="Enter 6-digit OTP"
+                className="w-full rounded-xl border border-[#ADD8E6] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#000080]"
+              />
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#000080] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#000060] disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Updating...
-                  </>
-                ) : (
-                  <>
-                    <Save className="h-4 w-4" />
-                    Change Password
-                  </>
-                )}
-              </button>
-
+              <p className="mt-2 text-xs text-[#6D8196]">
+                Enter the verification OTP to confirm
+                the password change.
+              </p>
             </div>
 
-          </form>
-        </div>
+            {error && (
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                {error}
+              </div>
+            )}
 
+            {message && (
+              <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-600">
+                {message}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#000080] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#080B78] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            >
+              <Lock size={17} />
+
+              {loading
+                ? "Updating..."
+                : "Change Password"}
+            </button>
+          </form>
+
+          {/* Forgot Password */}
+          <div className="mt-6 border-t border-[#ADD8E6]/50 pt-5">
+            <p className="text-sm text-[#6D8196]">
+              Forgot your password?
+            </p>
+
+            <Link
+              to="/user/forgot-password"
+              className="mt-1 inline-block text-sm font-semibold text-[#000080] hover:underline"
+            >
+              Reset Password
+            </Link>
+          </div>
+
+        </div>
       </div>
     </div>
   );
